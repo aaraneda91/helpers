@@ -1,0 +1,96 @@
+Public Function NumeroEscrito(value As Double)
+    Dim num2Text As String
+    value = Math.Truncate(value)
+    If value = 0 Then
+        num2Text = "CERO"
+    ElseIf value = 1 Then
+        num2Text = "UNO"
+    ElseIf value = 2 Then
+        num2Text = "DOS"
+    ElseIf value = 3 Then
+        num2Text = "TRES"
+    ElseIf value = 4 Then
+        num2Text = "CUATRO"
+    ElseIf value = 5 Then
+        num2Text = "CINCO"
+    ElseIf value = 6 Then
+        num2Text = "SEIS"
+    ElseIf value = 7 Then
+        num2Text = "SIETE"
+    ElseIf value = 8 Then
+        num2Text = "OCHO"
+    ElseIf value = 9 Then
+        num2Text = "NUEVE"
+    ElseIf value = 10 Then
+        num2Text = "DIEZ"
+    ElseIf value = 11 Then
+        num2Text = "ONCE"
+    ElseIf value = 12 Then
+        num2Text = "DOCE"
+    ElseIf value = 13 Then
+        num2Text = "TRECE"
+    ElseIf value = 14 Then
+        num2Text = "CATORCE"
+    ElseIf value = 15 Then
+        num2Text = "QUINCE"
+    ElseIf value < 20 Then
+        num2Text = "DIECI " & NumeroEscrito(value - 10)
+    ElseIf value = 20 Then
+        num2Text = "VEINTE"
+    ElseIf value < 30 Then
+        num2Text = "VEINTI" & NumeroEscrito(value - 20)
+    ElseIf value = 30 Then
+        num2Text = "TREINTA"
+    ElseIf value = 40 Then
+        num2Text = "CUARENTA"
+    ElseIf value = 50 Then
+        num2Text = "CINCUENTA"
+    ElseIf value = 60 Then
+        num2Text = "SESENTA"
+    ElseIf value = 70 Then
+        num2Text = "SETENTA"
+    ElseIf value = 80 Then
+        num2Text = "OCHENTA"
+    ElseIf value = 90 Then
+        num2Text = "NOVENTA"
+    ElseIf value < 100 Then
+        num2Text = NumeroEscrito(Math.Truncate(value / 10) * 10) & " Y " & NumeroEscrito(value Mod 10)
+    ElseIf value = 100 Then
+        num2Text = "CIEN"
+    ElseIf value < 200 Then
+        num2Text = "CIENTO " & NumeroEscrito(value - 100)
+    ElseIf value = 200 Or value = 300 Or value = 400 Or value = 600 Or value = 800 Then
+        num2Text = NumeroEscrito(Math.Truncate(value / 100)) + "CIENTOS"
+    ElseIf value = 500 Then
+        num2Text = "QUINIENTOS"
+    ElseIf value = 700 Then
+        num2Text = "SETECIENTOS"
+    ElseIf value = 900 Then
+        num2Text = "NOVECIENTOS"
+    ElseIf value < 1000 Then
+        num2Text = NumeroEscrito(Math.Truncate(value / 100) * 100) + " " + NumeroEscrito(value Mod 100)
+    ElseIf value = 1000 Then
+        num2Text = "MIL"
+    ElseIf value < 2000 Then
+        num2Text = "MIL " & NumeroEscrito(value Mod 1000)
+    ElseIf value < 1000000 Then
+        num2Text = NumeroEscrito(Math.Truncate(value / 1000)) + " MIL"
+        If ((value Mod 1000) > 0) Then
+            num2Text = num2Text + " " + NumeroEscrito(value Mod 1000)
+        End If
+    ElseIf value = 1000000 Then
+        num2Text = "UN MILLÓN"
+    ElseIf value < 2000000 Then
+        num2Text = "UN MILLÓN " & NumeroEscrito(value Mod 1000000)
+    ElseIf value < 1000000000000 Then
+        num2Text = NumeroEscrito(Math.Truncate(value / 1000000)) + " MILLONES "
+        If ((value - Math.Truncate(value / 1000000) * 1000000) > 0) Then
+            num2Text = num2Text + " " + NumeroEscrito(value - Math.Truncate(value / 1000000) * 1000000)
+        End If
+    ElseIf value = 1000000000000 Then
+        num2Text = "UN BILLÓN"
+    Else
+            num2Text = ""
+    End If
+    Return num2Text
+End Function
